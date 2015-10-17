@@ -10,7 +10,7 @@ import oauth2
 
 # Create your views here.
 def home(request):
-	main();
+    londonPopulation()
 
 API_HOST = 'api.yelp.com'
 DEFAULT_TERM = 'dinner'
@@ -26,42 +26,43 @@ TOKEN = 'HVJ5vIeXH__KV4g2nTVoIYRxe_yIuEwj'
 TOKEN_SECRET = 'Vc3bYAxJN9HInpoEUOdi-gZJ4vA'
 
 def londonPopulation():
-	#data from wikipedia
-	Population = {};
-	Population["Islington"] = 14,735
-	Population["Tower Hamlets"] = 14,201
-	Population["Hackney"] = 13,850
-	Population["Kensington and Chelsea"] = 13,016
-	Population["Lambeth"] = 11,786
-	Population["Hammersmith and Fulham"] = 11,148
-	Population["Westminster"] = 11,109
-	Population["Camden"] = 10,675
-	Population["Southwark"] = 10,432
-	Population["Wandsworth"] = 9,181
-	Population["Newham"] = 9,009
-	Population["Haringey"] = 8,918
-	Population["Lewisham"] = 8,341
-	Population["Brent"] = 7,460
-	Population["Waltham Forest"] = 6,872
-	Population["Ealing"] = 6,109
-	Population["Greenwich"] = 5,717
-	Population["Barking and Dagenham"] = 5,508
-	Population["Merton"] = 5,356
-	Population["Redbridge"] = 5,233
-	Population["Harrow"] = 4,920
-	Population["Hounslow"] = 4,742
-	Population["Kingston upon Thames"] = 4,593
-	Population["Sutton"] = 4,503
-	Population["Croydon"] = 4,373
-	Population["Barnet"] = 4,309
-	Population["Enfield"] = 4,007
-	Population["Bexley"] = 3,932
-	Population["Richmond upon Thames"] = 3,396
-	Population["City of London"] = 2,691
-	Population["Hillingdon"] = 2,523
-	Population["Havering"] = 2,196
-	Population["Bromley"] = 2,142
-	return Population
+    Population = {}
+    Population["Islington"] = 14735
+    Population["Tower Hamlets"] = 14201
+    Population["Hackney"] = 13850
+    Population["Kensington and Chelsea"] = 13016
+    Population["Lambeth"] = 11786
+    Population["Hammersmith and Fulham"] = 11148
+    Population["Westminster"] = 11109
+    Population["Camden"] = 10675
+    Population["Southwark"] = 10432
+    Population["Wandsworth"] = 9181
+    Population["Newham"] = 9009
+    Population["Haringey"] = 8918
+    Population["Lewisham"] = 8341
+    Population["Brent"] = 7460
+    Population["Waltham Forest"] = 6872
+    Population["Ealing"] = 6109
+    Population["Greenwich"] = 5717
+    Population["Barking and Dagenham"] = 5508
+    Population["Merton"] = 5356
+    Population["Redbridge"] = 5233
+    Population["Harrow"] = 4920
+    Population["Hounslow"] = 4742
+    Population["Kingston upon Thames"] = 4593
+    Population["Sutton"] = 4503
+    Population["Croydon"] = 4373
+    Population["Barnet"] = 4309
+    Population["Enfield"] = 4007
+    Population["Bexley"] = 3932
+    Population["Richmond upon Thames"] = 3396
+    Population["City of London"] = 2691
+    Population["Hillingdon"] = 2523
+    Population["Havering"] = 2196
+    Population["Bromley"] = 2142
+    with open('population.json', 'w') as fp:
+        json.dump(Population, fp)
+    render(request, 'base.html', Population)
 
 def request(host, path, url_params=None):
     url_params = url_params or {}
