@@ -100,7 +100,10 @@ def main(request):
     input_values = dict({'term': 'food', 'location': 'Vegesack'});
     context = {}
     try:
-        context['listOfResponses'] = query_api(input_values['term'], input_values['location'])
+    	context['listOfResponses'] = [];
+    	LondonRegions = ["Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley", "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney", "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon", "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames", "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames", "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth", "Westminster"];
+    	for i in LondonRegions:
+        	context['listOfResponses'] = context['listOfResponses'] + query_api(input_values['term'], i)
         #pprint.pprint(context, indent=2)
         return render(request, 'base.html', context)
     except urllib2.HTTPError as error:
