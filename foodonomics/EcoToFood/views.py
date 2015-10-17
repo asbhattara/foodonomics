@@ -25,6 +25,44 @@ CONSUMER_SECRET = '2IAn50iLysgm4__a49cTvNO9X2M'
 TOKEN = 'HVJ5vIeXH__KV4g2nTVoIYRxe_yIuEwj'
 TOKEN_SECRET = 'Vc3bYAxJN9HInpoEUOdi-gZJ4vA'
 
+def londonPopulation():
+	#data from wikipedia
+	Population = {};
+	Population["Islington"] = 14,735
+	Population["Tower Hamlets"] = 14,201
+	Population["Hackney"] = 13,850
+	Population["Kensington and Chelsea"] = 13,016
+	Population["Lambeth"] = 11,786
+	Population["Hammersmith and Fulham"] = 11,148
+	Population["Westminster"] = 11,109
+	Population["Camden"] = 10,675
+	Population["Southwark"] = 10,432
+	Population["Wandsworth"] = 9,181
+	Population["Newham"] = 9,009
+	Population["Haringey"] = 8,918
+	Population["Lewisham"] = 8,341
+	Population["Brent"] = 7,460
+	Population["Waltham Forest"] = 6,872
+	Population["Ealing"] = 6,109
+	Population["Greenwich"] = 5,717
+	Population["Barking and Dagenham"] = 5,508
+	Population["Merton"] = 5,356
+	Population["Redbridge"] = 5,233
+	Population["Harrow"] = 4,920
+	Population["Hounslow"] = 4,742
+	Population["Kingston upon Thames"] = 4,593
+	Population["Sutton"] = 4,503
+	Population["Croydon"] = 4,373
+	Population["Barnet"] = 4,309
+	Population["Enfield"] = 4,007
+	Population["Bexley"] = 3,932
+	Population["Richmond upon Thames"] = 3,396
+	Population["City of London"] = 2,691
+	Population["Hillingdon"] = 2,523
+	Population["Havering"] = 2,196
+	Population["Bromley"] = 2,142
+	return Population
+
 def request(host, path, url_params=None):
     url_params = url_params or {}
     url = 'https://{0}{1}?'.format(host, urllib.quote(path.encode('utf8')))
