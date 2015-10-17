@@ -1,3 +1,11 @@
-{% for i in listOfResponses %}
+Restaurant: <br>
+
+{% for i in restaurant.listOfResponses %}
+{{ i.location.coordinate.latitude }}, {{ i.location.coordinate.longitude }} <br>
+{% endfor %}
+
+Cafe: <br>
+
+{% for i in coffee.listOfResponses %}
 {{ i.location.coordinate.latitude }}, {{ i.location.coordinate.longitude }} <br>
 {% endfor %}
