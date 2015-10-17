@@ -18,4 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'EcoToFood.views.home', name='name'),
+    url(r'^results$', 'EcoToFood.views.results', name='result')
 ]

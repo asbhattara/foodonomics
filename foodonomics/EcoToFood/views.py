@@ -8,9 +8,34 @@ import urllib
 import urllib2
 import oauth2
 
-# Create your views here.
+
 def home(request):
-    londonPopulation()
+    errors=[]
+    context = {}
+
+    if request.method == 'GET':
+        return render(request, 'home.html', context)
+    
+    form = editProfileForm(request.POST, request.FILES, instance=profileToEdit)
+
+    if not form.is_valid():
+        context = {'form' : form, 'userInfo' : currentUserInfo, 'searchForm' : grumblrSearchForm,'addGrumblForm' : addGrumblForm, 'passwordChangeForm':passwordChangeForm}
+        return render(request, 'editProfilePage.html', context)
+
+    form.save()
+
+    ui = userDetails.objects.filter(user=request.user)
+    return render(request, 'result.html', {})
+
+
+
+
+
+#londonPopulation()
+
+
+
+
 
 API_HOST = 'api.yelp.com'
 DEFAULT_TERM = 'dinner'
@@ -157,7 +182,7 @@ def main(request):
     context = {}
     context['restaurant'] = restaurant_dict
     context['coffee'] = coffee_dict
-    return render(request, 'base.html', context)
+    return render(request, 'testApi.html', context)
     #"""
 if __name__ == '__main__':
     main()
