@@ -17,5 +17,5 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', 'EcoToFood.views.home', name='name'),
+    url(r'^$', 'EcoToFood.views.main', name='name'),
 ]
