@@ -186,15 +186,15 @@ def query_api(term, location):
     return responseList
 
 def main(request):
-    """
-    input_values = dict({'term': 'coffee & tea', 'location': 'Vegesack'});
+    
+    input_values = dict({'term': 'Mexican', 'location': 'Vegesack'});
     context = {}
     try:
     	context['listOfResponses'] = [];
     	LondonRegions = ["Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley", "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney", "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon", "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames", "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames", "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth", "Westminster, London"];
     	for i in LondonRegions:
         	context['listOfResponses'] = context['listOfResponses'] + query_api(input_values['term'], i)
-        with open('coffee.json', 'w') as fp:
+        with open('mexican.json', 'w') as fp:
             json.dump(context, fp)
         return render(request, 'base.html', context)
     except urllib2.HTTPError as error:
