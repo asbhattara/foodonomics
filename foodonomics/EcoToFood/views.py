@@ -10,20 +10,59 @@ import oauth2
 
 
 def home(request):
-    errors=[]
     context = {}
-
+    
     if request.method == 'GET':
         return render(request, 'home.html', context)
 
+    mapParameters = {}
+    mapParameters[1] = numberOfRestaurants
+    mapParameters[2] = numberOfCoffeeShops
+    mapParameters[3] = populationDensity
+    mapParameters[4] = propertyPrice
+    mapParameters[5] = studentPopulationDensity
+    mapParameters[6] = educationalInstitutes
+    mapParameters[7] = investmentCompanies
+
+    allowedParameters = []
     busType =  request.POST.get("type", "")
+    if busType == 1:
+        allowedParameters = [4,6,7]
+    elif busType == 2:
+        allowedParameters = [1,3,4]
+    else:
+        allowedParameters = [1,4,5]
 
+    selected_parameters = some_var = request.POST.getlist('checks')
 
-    ui = userDetails.objects.filter(user=request.user)
-    return render(request, 'result.html', {})
+    if selected_parameters in allowedParameters:
+        print "alles gut"
+    else:
+        "nicht so gut"
 
-
-
+    context = {}
+    for i in selected_parameters:
+        if i = 1:
+            r = open('restaurant.json')
+            restaurant_dict = json.load(r)
+            context['restaurant'] = restaurant_dict
+        elif i = 2:
+            c = open('coffee.json')
+            coffee_dict = json.load(c)
+            context['coffee'] = coffee_dict
+        elif i = 3:
+            print populationDensity
+        elif i = 4:
+            print propertyPrice
+        elif i = 5:
+            print studentPopulationDensity
+        elif i = 6:
+            print educationalInstitutes
+        elif i = 7:
+            print investmentCompanies
+    
+    
+    return render(request, 'result.html', context)
 
 
 #londonPopulation()
