@@ -1,5 +1,6 @@
 {% extends "base.html" %}
     {% block customHeader %}
+    <script src="myscripts.js"></script>
     <script src="/static/js/base.js"></script>
     {% endblock %}
     {% block customBody %}
@@ -9,8 +10,44 @@
           <h3>Finding a pad to launch your dreams from.</h3>
         </div>
         <div class="jumbotron" style="text-align:center; ">
-
+            <div id="map" class="col-md-8"></div>
         </div>
         </div>
       </div>
+    
+      {% endblock %}
+
+    {% block customFooter %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+    function initMap() {
+      var map, heatmap;
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {lat: 37.775, lng: -122.434},
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+      });
+
+      heatmap = new google.maps.visualization.HeatmapLayer({
+        data: points,
+        map: map
+      });
+    }
+    var points = [
+      new google.maps.LatLng(37.782551, -122.445368),
+      new google.maps.LatLng(37.782745, -122.444586),
+      new google.maps.LatLng(37.782842, -122.443688),
+      new google.maps.LatLng(37.782919, -122.442815),
+      new google.maps.LatLng(37.782992, -122.442112),
+      new google.maps.LatLng(37.783100, -122.441461),
+      new google.maps.LatLng(37.783206, -122.440829),
+      new google.maps.LatLng(37.783273, -122.440324),
+      new google.maps.LatLng(37.783316, -122.440023),
+      new google.maps.LatLng(37.783357, -122.439794),
+      new google.maps.LatLng(37.783371, -122.439687)   
+    ];
+    </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZkPzknnX-ZElbG4y7oH7vBaaNE336SBY&signed_in=true&libraries=visualization&callback=initMap">
+    </script>
     {% endblock %}
