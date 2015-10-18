@@ -15,14 +15,9 @@ def home(request):
 
     if request.method == 'GET':
         return render(request, 'home.html', context)
-    
-    form = editProfileForm(request.POST, request.FILES, instance=profileToEdit)
 
-    if not form.is_valid():
-        context = {'form' : form, 'userInfo' : currentUserInfo, 'searchForm' : grumblrSearchForm,'addGrumblForm' : addGrumblForm, 'passwordChangeForm':passwordChangeForm}
-        return render(request, 'editProfilePage.html', context)
+    busType =  request.POST.get("type", "")
 
-    form.save()
 
     ui = userDetails.objects.filter(user=request.user)
     return render(request, 'result.html', {})
