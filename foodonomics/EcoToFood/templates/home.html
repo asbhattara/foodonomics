@@ -10,6 +10,8 @@
         </div>
         <div class="jumbotron" style="text-align:center; ">
           <h3>Please select what type of busines you are going to launch?</h3>
+            <form action="/" method="POST">
+              {% csrf_token %}
             <div class="input-group stylish-input-group">
               <div id = "attachToMe">
               <select id = "selectType" name="type" class="form-control">
@@ -17,17 +19,11 @@
                 <option value="2">Restaurant</option>
                 <option value="3">Cafe</option>
               </select>
-              <span class="input-group-addon">
-                  <button type="submit" onclick="appendParameters()">
-                      <span class="glyphicon glyphicon-search"></span>
-                  </button>  
-              </span>
               </div>
-                  </div>
+              </div>
+              </form>
 
               </div>
-              <!--Render parameter dropdown here-->
-              <!--Add submit button-->
         </div>
       </div>
     {% endblock %}

@@ -15,52 +15,42 @@ def home(request):
     if request.method == 'GET':
         return render(request, 'home.html', context)
 
-    mapParameters = {}
-    mapParameters[1] = numberOfRestaurants
-    mapParameters[2] = numberOfCoffeeShops
-    mapParameters[3] = populationDensity
-    mapParameters[4] = propertyPrice
-    mapParameters[5] = studentPopulationDensity
-    mapParameters[6] = educationalInstitutes
-    mapParameters[7] = investmentCompanies
-
     allowedParameters = []
     busType =  request.POST.get("type", "")
-    if busType == 1:
+    if int(busType) == 1:
         allowedParameters = [4,6,7]
-    elif busType == 2:
+    elif int(busType) == 2:
         allowedParameters = [1,3,4]
     else:
         allowedParameters = [1,4,5]
 
-    selected_parameters = some_var = request.POST.getlist('checks')
-
-    if selected_parameters in allowedParameters:
-        print "alles gut"
-    else:
-        "nicht so gut"
+    final_parameters = []
+    selected_parameters = some_var = request.POST.getlist('checks[]')
+    for i in selected_parameters:
+        final_parameters.append(int(i))
 
     context = {}
-    for i in selected_parameters:
+    for i in final_parameters:
         if i == 1:
             r = open('restaurant.json')
             restaurant_dict = json.load(r)
             context['restaurant'] = restaurant_dict
+            print "1 - success"
         elif i == 2:
             c = open('coffee.json')
             coffee_dict = json.load(c)
             context['coffee'] = coffee_dict
+            print "2 - success"
         elif i == 3:
-            print populationDensity
+            print "populationDensity"
         elif i == 4:
-            print propertyPrice
+            print "propertyPrice"
         elif i == 5:
-            print studentPopulationDensity
+            print "studentPopulationDensity"
         elif i == 6:
-            print educationalInstitutes
+            print "educationalInstitutes"
         elif i == 7:
-            print investmentCompanies
-    
+            print "investmentCompanies"
     
     return render(request, 'result.html', context)
 
@@ -68,7 +58,8 @@ def home(request):
 #londonPopulation()
 
 
-
+def results(request):
+    return render(request, 'result.html', {})
 
 
 API_HOST = 'api.yelp.com'

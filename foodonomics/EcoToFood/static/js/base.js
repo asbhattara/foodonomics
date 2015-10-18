@@ -1,6 +1,13 @@
+$( document ).ready(function() {
+	$("#selectType").on("click",appendParameters);
+});
+
 function appendParameters(){
 	var n = $("#selectType").val();
 	 $('.checkbox').remove();
+	 $('#finalSubmit').remove();
+
+	 $("#attachToMe").append('<input type="hidden" name="type" value='+n+'>');
 	if (n==1){
 		$("#attachToMe").append( "<div class=\"checkbox\"><label><input type=\"checkbox\" name=\"checks[]\" value=\"4\" />Property Price</label></div>"+
 				"<div class=\"checkbox\"><label><input type=\"checkbox\" name=\"checks[]\" value=\"6\" />Educational Institutes</label></div>"+
@@ -15,7 +22,7 @@ function appendParameters(){
 			"<div class=\"checkbox\"><label><input type=\"checkbox\" name=\"checks[]\" value=\"4\" />Property Price</label></div>"+
 			"<div class=\"checkbox\"><label><input type=\"checkbox\" name=\"checks[]\" value=\"5\" />Student Population Density</label></div>" );
 	}
-	console.log($("#selectType").children().length);
+	$("#attachToMe").append("<input id='finalSubmit' type='submit' value='submit' name='submit'  />");
 };
 
 
