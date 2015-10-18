@@ -10,26 +10,56 @@ import oauth2
 
 
 def home(request):
-    errors=[]
     context = {}
-
+    
     if request.method == 'GET':
         return render(request, 'home.html', context)
 
+    allowedParameters = []
     busType =  request.POST.get("type", "")
+    if int(busType) == 1:
+        allowedParameters = [4,6,7]
+    elif int(busType) == 2:
+        allowedParameters = [1,3,4]
+    else:
+        allowedParameters = [1,4,5]
 
+    final_parameters = []
+    selected_parameters = some_var = request.POST.getlist('checks[]')
+    for i in selected_parameters:
+        final_parameters.append(int(i))
 
-    ui = userDetails.objects.filter(user=request.user)
-    return render(request, 'result.html', {})
-
-
-
+    context = {}
+    for i in final_parameters:
+        if i == 1:
+            r = open('restaurant.json')
+            restaurant_dict = json.load(r)
+            context['restaurant'] = restaurant_dict
+            print "1 - success"
+        elif i == 2:
+            c = open('coffee.json')
+            coffee_dict = json.load(c)
+            context['coffee'] = coffee_dict
+            print "2 - success"
+        elif i == 3:
+            print "populationDensity"
+        elif i == 4:
+            print "propertyPrice"
+        elif i == 5:
+            print "studentPopulationDensity"
+        elif i == 6:
+            print "educationalInstitutes"
+        elif i == 7:
+            print "investmentCompanies"
+    
+    return render(request, 'result.html', context)
 
 
 #londonPopulation()
 
 
-
+def results(request):
+    return render(request, 'result.html', {})
 
 
 API_HOST = 'api.yelp.com'
@@ -156,15 +186,15 @@ def query_api(term, location):
     return responseList
 
 def main(request):
-    """
-    input_values = dict({'term': 'coffee & tea', 'location': 'Vegesack'});
+    
+    input_values = dict({'term': 'Mexican', 'location': 'Vegesack'});
     context = {}
     try:
     	context['listOfResponses'] = [];
     	LondonRegions = ["Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley", "Camden", "Croydon", "Ealing", "Enfield", "Greenwich", "Hackney", "Hammersmith and Fulham", "Haringey", "Harrow", "Havering", "Hillingdon", "Hounslow", "Islington", "Kensington and Chelsea", "Kingston upon Thames", "Lambeth", "Lewisham", "Merton", "Newham", "Redbridge", "Richmond upon Thames", "Southwark", "Sutton", "Tower Hamlets", "Waltham Forest", "Wandsworth", "Westminster, London"];
     	for i in LondonRegions:
         	context['listOfResponses'] = context['listOfResponses'] + query_api(input_values['term'], i)
-        with open('coffee.json', 'w') as fp:
+        with open('mexican.json', 'w') as fp:
             json.dump(context, fp)
         return render(request, 'base.html', context)
     except urllib2.HTTPError as error:
