@@ -10,7 +10,7 @@
         <div class="jumbotron" style="text-align:center; ">
           <h3>Please select what type of busines you are going to launch?</h3>
             <div class="input-group stylish-input-group">
-              <select class="form-control">
+              <select name="type" class="form-control">
                 <option value="Tech-Startup">Tech-Startup</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Cafe">Cafe</option>
@@ -21,6 +21,17 @@
                           <span class="glyphicon glyphicon-search"></span>
                       </button>  
                   </span>
+
+                  <div class="checkbox">
+                    <label><input type="checkbox" name="checks[]" value="1" />Option 1</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" name="checks[]" value="2" />Option 2</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" name="checks[]" value="3" />Option 3</label>
+                  </div>              
+
               </div>
               <!--Render parameter dropdown here-->
               <!--Add submit button-->
