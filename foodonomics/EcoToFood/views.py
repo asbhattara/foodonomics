@@ -42,23 +42,23 @@ def home(request):
 
     context = {}
     for i in selected_parameters:
-        if i = 1:
+        if i == 1:
             r = open('restaurant.json')
             restaurant_dict = json.load(r)
             context['restaurant'] = restaurant_dict
-        elif i = 2:
+        elif i == 2:
             c = open('coffee.json')
             coffee_dict = json.load(c)
             context['coffee'] = coffee_dict
-        elif i = 3:
+        elif i == 3:
             print populationDensity
-        elif i = 4:
+        elif i == 4:
             print propertyPrice
-        elif i = 5:
+        elif i == 5:
             print studentPopulationDensity
-        elif i = 6:
+        elif i == 6:
             print educationalInstitutes
-        elif i = 7:
+        elif i == 7:
             print investmentCompanies
     
     

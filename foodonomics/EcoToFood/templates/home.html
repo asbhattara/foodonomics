@@ -1,5 +1,6 @@
 {% extends "base.html" %}
     {% block customHeader %}
+    <script src="/static/js/base.js"></script>
     {% endblock %}
     {% block customBody %}
       <div class="container">
@@ -10,27 +11,19 @@
         <div class="jumbotron" style="text-align:center; ">
           <h3>Please select what type of busines you are going to launch?</h3>
             <div class="input-group stylish-input-group">
-              <select name="type" class="form-control">
+              <div id = "attachToMe">
+              <select id = "selectType" name="type" class="form-control">
                 <option value="1">Tech-Startup</option>
                 <option value="2">Restaurant</option>
                 <option value="3">Cafe</option>
               </select>
-                  <span class="input-group-addon">
-
-                      <button type="submit">
-                          <span class="glyphicon glyphicon-search"></span>
-                      </button>  
-                  </span>
-
-                  <div class="checkbox">
-                    <label><input type="checkbox" name="checks[]" value="1" />Option 1</label>
+              <span class="input-group-addon">
+                  <button type="submit" onclick="appendParameters()">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>  
+              </span>
+              </div>
                   </div>
-                  <div class="checkbox">
-                    <label><input type="checkbox" name="checks[]" value="2" />Option 2</label>
-                  </div>
-                  <div class="checkbox">
-                    <label><input type="checkbox" name="checks[]" value="3" />Option 3</label>
-                  </div>              
 
               </div>
               <!--Render parameter dropdown here-->
